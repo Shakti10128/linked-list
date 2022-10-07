@@ -3,6 +3,7 @@
 using namespace std;
 
 // hello world
+// cout<<"hello world";
 
 // taking input of linked list
 /*pair<Node*,Node*>*/Node* takeInput(){
