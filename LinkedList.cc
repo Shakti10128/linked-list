@@ -2,6 +2,8 @@
 #include"LinkedList.h"
 using namespace std;
 
+// hello world
+
 // taking input of linked list
 /*pair<Node*,Node*>*/Node* takeInput(){
     // pair<Node*,Node*> p;
