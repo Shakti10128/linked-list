@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include"LinkedList.h"
+#include"LinkedListClass.h"
 using namespace std;
 // taking input of linked list
 pair<Node*,Node*> takeInput(){
