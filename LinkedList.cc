@@ -24,13 +24,16 @@ Node* takeInput(){
     return head;
 }
 
+void print(Node * head){
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head = head->next;
+    }
+}
+
 //  1 2 3 4 5 6 -1
 int main(){
     Node* head = takeInput();
     Node * temp = head;
-
-    while(temp!=NULL){
-        cout<<temp->data<<" ";
-        temp = temp->next;
-    }
+    print(temp);
 }
