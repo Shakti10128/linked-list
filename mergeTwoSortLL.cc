@@ -86,8 +86,8 @@ Node * mergeTwoSortedLL(Node *head1,Node* head2){
 int main(){
     Node* head1 = takeInput();
     Node* head2 = takeInput();
-    Node * temp1 = head1;
-    Node * temp2 = head2;
-    Node * newHead = mergeTwoSortedLL(temp1,temp2);
+    Node * newHead = mergeTwoSortedLL(head1,head2);
+    delete head1;
+    delete head2;
     print(newHead);
 }
