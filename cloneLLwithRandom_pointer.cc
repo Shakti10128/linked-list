@@ -114,7 +114,7 @@ Node * cloneLL2(Node * head){
         cloneNode = Next;
 
     }
-    // random pointer copy
+    // step 3 random pointer copy
     temp = head;
     while( temp != NULL){
         if(temp->next!=NULL){
