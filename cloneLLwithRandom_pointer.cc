@@ -90,6 +90,54 @@ Node * cloneLL(Node * head){
     return cloneHead;
 }
 
+/*-----cloning a linked list without using any extra space----*/
+Node * cloneLL2(Node * head){
+    Node * temp = head;
+    Node * cloneHead = NULL;
+    Node * cloneTail = NULL;
+    // step 1 creating a clone of orignal linked list
+    while(temp!=NULL){
+        insert(cloneHead,cloneTail,temp->data);
+        temp = temp->next;
+    }
+    // step 2 cloneNode add in between orignal linked list
+    Node * orignalNode = head;
+    Node * cloneNode = cloneHead;
+    while(orignalNode!=NULL){
+        // changing oringnal node next pointer
+        Node* Next = orignalNode->next;
+        orignalNode->next = cloneNode;
+        orignalNode = Next;
+        // changing clone node next pointer
+        Next = cloneNode->next;
+        cloneNode->next = orignalNode;
+        cloneNode = Next;
+
+    }
+    // random pointer copy
+    temp = head;
+    while( temp != NULL){
+        if(temp->next!=NULL){
+            temp->next->random = temp->random ? temp->random->next : temp ->random;
+        }
+        temp = temp->next->next;
+    }
+
+    // step 4 revert changes done in step 2
+    orignalNode = head;
+    cloneNode = cloneHead;
+    while(orignalNode!=NULL){
+        orignalNode->next = cloneNode->next;
+        orignalNode = orignalNode->next;
+        if(orignalNode!=NULL){
+        cloneNode->next = orignalNode->next;
+        }
+        cloneNode = cloneNode->next;
+    }
+    // step - 5 return  the ans;
+    return cloneHead;
+}
+
 //  1 2 3 4 5 6 -1
 int main(){
     Node* head = takeInput();
@@ -97,12 +145,15 @@ int main(){
     temp->random = temp->next->next;
     temp->next->random = temp->next->next->next;
     temp->next->next->next->random = temp;
-    // printing orignal random pointer data
-    cout<<"Orignal random pointer data "<<endl;
-    printRandomData(head);
+
+    // // printing orignal random pointer data
+    // cout<<"Orignal random pointer data "<<endl;
+    // printRandomData(head);
     
-    // printing clone linked list random pointer data
-    cout<<endl<<"Printing clone linked list random pointer data "<<endl;
-    Node * ans = cloneLL(head);
-    printRandomData(ans);
+    // // printing clone linked list random pointer data
+    // cout<<endl<<"Printing clone linked list random pointer data "<<endl;
+    // Node * ans = cloneLL(head);
+    // printRandomData(ans);
+    Node * ans2 = cloneLL2(head);
+    printRandomData(ans2);
 }
